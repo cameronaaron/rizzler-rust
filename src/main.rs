@@ -1,16 +1,14 @@
 use actix_files as fs;
-use actix_web::http::StatusCode;
 use actix_web::middleware::Logger;
 use actix_web::web::Form;
-use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer, Responder, Result};
+use actix_web::{web, App, HttpResponse, HttpServer, Result};
 use askama::Template;
 use dotenv::dotenv;
-use log::{error, info};
+use log::error;
 use reqwest::Client;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use serde_json::json;
 use std::env;
-use tokio::sync::Mutex;
 
 #[derive(Template)]
 #[template(path = "home.html")]
@@ -153,8 +151,8 @@ fn create_conversation_message(role: &str, content: &str) -> serde_json::Value {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
-    std::env::set_var("RUST_LOG", "actix_web=info");
-    env_logger::init();
+    let port = env::var("PORT").unwrap_or_else(|_| "5000".to_string());
+    let bind_address = format!("0.0.0.0:{}", port);
 
     HttpServer::new(|| {
         App::new()
@@ -165,7 +163,7 @@ async fn main() -> std::io::Result<()> {
             .route("/", web::get().to(home_get))
             .route("/", web::post().to(home))
     })
-    .bind(("0.0.0.0", 5000))?
+    .bind(&bind_address)?
     .run()
     .await
 }
