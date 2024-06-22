@@ -1259,6 +1259,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "rizz_translator"
+version = "0.1.0"
+dependencies = [
+ "actix-files",
+ "actix-web",
+ "askama",
+ "dotenv",
+ "env_logger",
+ "log",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
 name = "rustc-demangle"
 version = "0.1.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1415,22 +1431,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f92a496fb766b417c996b9c5e57daf2f7ad3b0bebe1ccfca4856390e3d3bb67"
 dependencies = [
  "autocfg",
-]
-
-[[package]]
-name = "slang_translator"
-version = "0.1.0"
-dependencies = [
- "actix-files",
- "actix-web",
- "askama",
- "dotenv",
- "env_logger",
- "log",
- "reqwest",
- "serde",
- "serde_json",
- "tokio",
 ]
 
 [[package]]
