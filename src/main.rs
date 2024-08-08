@@ -75,7 +75,7 @@ async fn call_openai_api(
                 "content-type": "application/json"
             },
             "query": {
-                "model": "gpt-4o",
+                "model": "gpt-4o-2024-08-06",
                 "messages": messages,
                 "temperature": 0.5,
                 "max_tokens": 500
