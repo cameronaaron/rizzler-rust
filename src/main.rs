@@ -75,7 +75,7 @@ async fn call_openai_api(
                 "content-type": "application/json"
             },
             "query": {
-                "model": "chatgpt-4o-latest",
+                "model": "o3-mini",
                 "messages": messages,
                 "temperature": 0.5,
                 "max_tokens": 500
